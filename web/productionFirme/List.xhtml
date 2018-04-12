@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProductionFirmeTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ProductionFirmeListForm">
+                <p:panel header="#{bundle.ListProductionFirmeTitle}">
+                    <p:dataTable id="datalist" value="#{productionFirmeController.items}" var="item"
+                                 selectionMode="single" selection="#{productionFirmeController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_entreePoussin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.entreePoussin}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_reliquat}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.reliquat}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_age}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.age}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_mortalite}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mortalite}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_transfert}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.transfert}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_vente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vente}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_poids}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.poids}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_numeroSemaine}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numeroSemaine}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_annee}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.annee}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_semaine}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.semaine}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_firme}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.firme}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_adteProductionFirme}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adteProductionFirme}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_productionOeufMale}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.productionOeufMale}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_productionOeufFemale}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.productionOeufFemale}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_productionOeufAlimentMale}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.productionOeufAlimentMale}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_productionOeufAlimentFemale}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.productionOeufAlimentFemale}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_production}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.production}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductionFirmeTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{productionFirmeController.prepareCreate}" update=":ProductionFirmeCreateForm" oncomplete="PF('ProductionFirmeCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ProductionFirmeViewForm" oncomplete="PF('ProductionFirmeViewDialog').show()" disabled="#{empty productionFirmeController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ProductionFirmeEditForm" oncomplete="PF('ProductionFirmeEditDialog').show()" disabled="#{empty productionFirmeController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{productionFirmeController.destroy}" update=":growl,datalist" disabled="#{empty productionFirmeController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

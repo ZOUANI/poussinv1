@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BackupViewDlg" widgetVar="BackupViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBackupTitle}">
+            <h:form id="BackupViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{backupController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBackupLabel_nom}"/>
+                        <h:outputText value="#{backupController.selected.nom}" title="#{bundle.ViewBackupTitle_nom}"/>
+                        <h:outputText value="#{bundle.ViewBackupLabel_dateSysteme}"/>
+                        <h:outputText value="#{backupController.selected.dateSysteme}" title="#{bundle.ViewBackupTitle_dateSysteme}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBackupLabel_id}"/>
+                        <h:outputText value="#{backupController.selected.id}" title="#{bundle.ViewBackupTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BackupViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductionFirmeParGenderViewDlg" widgetVar="ProductionFirmeParGenderViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProductionFirmeParGenderTitle}">
+            <h:form id="ProductionFirmeParGenderViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productionFirmeParGenderController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProductionFirmeParGenderLabel_effectifDebutJour}"/>
+                        <h:outputText value="#{productionFirmeParGenderController.selected.effectifDebutJour}" title="#{bundle.ViewProductionFirmeParGenderTitle_effectifDebutJour}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeParGenderLabel_mortalite}"/>
+                        <h:outputText value="#{productionFirmeParGenderController.selected.mortalite}" title="#{bundle.ViewProductionFirmeParGenderTitle_mortalite}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeParGenderLabel_entree}"/>
+                        <h:outputText value="#{productionFirmeParGenderController.selected.entree}" title="#{bundle.ViewProductionFirmeParGenderTitle_entree}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeParGenderLabel_transfert}"/>
+                        <h:outputText value="#{productionFirmeParGenderController.selected.transfert}" title="#{bundle.ViewProductionFirmeParGenderTitle_transfert}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeParGenderLabel_vente}"/>
+                        <h:outputText value="#{productionFirmeParGenderController.selected.vente}" title="#{bundle.ViewProductionFirmeParGenderTitle_vente}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeParGenderLabel_effectifFinJour}"/>
+                        <h:outputText value="#{productionFirmeParGenderController.selected.effectifFinJour}" title="#{bundle.ViewProductionFirmeParGenderTitle_effectifFinJour}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeParGenderLabel_id}"/>
+                        <h:outputText value="#{productionFirmeParGenderController.selected.id}" title="#{bundle.ViewProductionFirmeParGenderTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProductionFirmeParGenderViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TrieOeufParCategorieViewDlg" widgetVar="TrieOeufParCategorieViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTrieOeufParCategorieTitle}">
+            <h:form id="TrieOeufParCategorieViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{trieOeufParCategorieController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTrieOeufParCategorieLabel_totalEclosion}"/>
+                        <h:outputText value="#{trieOeufParCategorieController.selected.totalEclosion}" title="#{bundle.ViewTrieOeufParCategorieTitle_totalEclosion}"/>
+                        <h:outputText value="#{bundle.ViewTrieOeufParCategorieLabel_trieOeuf}"/>
+                        <h:outputText value="#{trieOeufParCategorieController.selected.trieOeuf}" title="#{bundle.ViewTrieOeufParCategorieTitle_trieOeuf}"/>
+                        <h:outputText value="#{bundle.ViewTrieOeufParCategorieLabel_pourcentage}"/>
+                        <h:outputText value="#{trieOeufParCategorieController.selected.pourcentage}" title="#{bundle.ViewTrieOeufParCategorieTitle_pourcentage}"/>
+                        <h:outputText value="#{bundle.ViewTrieOeufParCategorieLabel_categorieOeuf}"/>
+                        <h:outputText value="#{trieOeufParCategorieController.selected.categorieOeuf}" title="#{bundle.ViewTrieOeufParCategorieTitle_categorieOeuf}"/>
+                        <h:outputText value="#{bundle.ViewTrieOeufParCategorieLabel_miseEnIncubation}"/>
+                        <h:outputText value="#{trieOeufParCategorieController.selected.miseEnIncubation}" title="#{bundle.ViewTrieOeufParCategorieTitle_miseEnIncubation}"/>
+                        <h:outputText value="#{bundle.ViewTrieOeufParCategorieLabel_situationInitiale}"/>
+                        <h:outputText value="#{trieOeufParCategorieController.selected.situationInitiale}" title="#{bundle.ViewTrieOeufParCategorieTitle_situationInitiale}"/>
+                        <h:outputText value="#{bundle.ViewTrieOeufParCategorieLabel_entree}"/>
+                        <h:outputText value="#{trieOeufParCategorieController.selected.entree}" title="#{bundle.ViewTrieOeufParCategorieTitle_entree}"/>
+                        <h:outputText value="#{bundle.ViewTrieOeufParCategorieLabel_vente}"/>
+                        <h:outputText value="#{trieOeufParCategorieController.selected.vente}" title="#{bundle.ViewTrieOeufParCategorieTitle_vente}"/>
+                        <h:outputText value="#{bundle.ViewTrieOeufParCategorieLabel_don}"/>
+                        <h:outputText value="#{trieOeufParCategorieController.selected.don}" title="#{bundle.ViewTrieOeufParCategorieTitle_don}"/>
+                        <h:outputText value="#{bundle.ViewTrieOeufParCategorieLabel_perte}"/>
+                        <h:outputText value="#{trieOeufParCategorieController.selected.perte}" title="#{bundle.ViewTrieOeufParCategorieTitle_perte}"/>
+                        <h:outputText value="#{bundle.ViewTrieOeufParCategorieLabel_situationFinale}"/>
+                        <h:outputText value="#{trieOeufParCategorieController.selected.situationFinale}" title="#{bundle.ViewTrieOeufParCategorieTitle_situationFinale}"/>
+                        <h:outputText value="#{bundle.ViewTrieOeufParCategorieLabel_id}"/>
+                        <h:outputText value="#{trieOeufParCategorieController.selected.id}" title="#{bundle.ViewTrieOeufParCategorieTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TrieOeufParCategorieViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

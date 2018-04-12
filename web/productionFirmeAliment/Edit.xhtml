@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductionFirmeAlimentEditDlg" widgetVar="ProductionFirmeAlimentEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditProductionFirmeAlimentTitle}">
+            <h:form id="ProductionFirmeAlimentEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productionFirmeAlimentController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditProductionFirmeAlimentLabel_typeAliment}" for="typeAliment" />
+                        <p:selectOneMenu id="typeAliment" value="#{productionFirmeAlimentController.selected.typeAliment}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{typeAlimentController.itemsAvailableSelectOne}"
+                                           var="typeAlimentItem"
+                                           itemValue="#{typeAlimentItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProductionFirmeAlimentLabel_situationInitiale}" for="situationInitiale" />
+                        <p:inputText id="situationInitiale" value="#{productionFirmeAlimentController.selected.situationInitiale}" title="#{bundle.EditProductionFirmeAlimentTitle_situationInitiale}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeAlimentLabel_entree}" for="entree" />
+                        <p:inputText id="entree" value="#{productionFirmeAlimentController.selected.entree}" title="#{bundle.EditProductionFirmeAlimentTitle_entree}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeAlimentLabel_consommation}" for="consommation" />
+                        <p:inputText id="consommation" value="#{productionFirmeAlimentController.selected.consommation}" title="#{bundle.EditProductionFirmeAlimentTitle_consommation}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeAlimentLabel_transfert}" for="transfert" />
+                        <p:inputText id="transfert" value="#{productionFirmeAlimentController.selected.transfert}" title="#{bundle.EditProductionFirmeAlimentTitle_transfert}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeAlimentLabel_vente}" for="vente" />
+                        <p:inputText id="vente" value="#{productionFirmeAlimentController.selected.vente}" title="#{bundle.EditProductionFirmeAlimentTitle_vente}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeAlimentLabel_situationFinale}" for="situationFinale" />
+                        <p:inputText id="situationFinale" value="#{productionFirmeAlimentController.selected.situationFinale}" title="#{bundle.EditProductionFirmeAlimentTitle_situationFinale}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeAlimentLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{productionFirmeAlimentController.selected.id}" title="#{bundle.EditProductionFirmeAlimentTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{productionFirmeAlimentController.update}" value="#{bundle.Save}" update="display,:ProductionFirmeAlimentListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ProductionFirmeAlimentEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProductionFirmeAlimentEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

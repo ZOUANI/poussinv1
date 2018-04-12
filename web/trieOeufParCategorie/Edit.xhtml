@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TrieOeufParCategorieEditDlg" widgetVar="TrieOeufParCategorieEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTrieOeufParCategorieTitle}">
+            <h:form id="TrieOeufParCategorieEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{trieOeufParCategorieController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTrieOeufParCategorieLabel_totalEclosion}" for="totalEclosion" />
+                        <p:inputText id="totalEclosion" value="#{trieOeufParCategorieController.selected.totalEclosion}" title="#{bundle.EditTrieOeufParCategorieTitle_totalEclosion}" />
+                        <p:outputLabel value="#{bundle.EditTrieOeufParCategorieLabel_trieOeuf}" for="trieOeuf" />
+                        <p:selectOneMenu id="trieOeuf" value="#{trieOeufParCategorieController.selected.trieOeuf}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{trieOeufController.itemsAvailableSelectOne}"
+                                           var="trieOeufItem"
+                                           itemValue="#{trieOeufItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTrieOeufParCategorieLabel_pourcentage}" for="pourcentage" />
+                        <p:inputText id="pourcentage" value="#{trieOeufParCategorieController.selected.pourcentage}" title="#{bundle.EditTrieOeufParCategorieTitle_pourcentage}" />
+                        <p:outputLabel value="#{bundle.EditTrieOeufParCategorieLabel_categorieOeuf}" for="categorieOeuf" />
+                        <p:selectOneMenu id="categorieOeuf" value="#{trieOeufParCategorieController.selected.categorieOeuf}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{categorieOeufController.itemsAvailableSelectOne}"
+                                           var="categorieOeufItem"
+                                           itemValue="#{categorieOeufItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTrieOeufParCategorieLabel_miseEnIncubation}" for="miseEnIncubation" />
+                        <p:inputText id="miseEnIncubation" value="#{trieOeufParCategorieController.selected.miseEnIncubation}" title="#{bundle.EditTrieOeufParCategorieTitle_miseEnIncubation}" />
+                        <p:outputLabel value="#{bundle.EditTrieOeufParCategorieLabel_situationInitiale}" for="situationInitiale" />
+                        <p:inputText id="situationInitiale" value="#{trieOeufParCategorieController.selected.situationInitiale}" title="#{bundle.EditTrieOeufParCategorieTitle_situationInitiale}" />
+                        <p:outputLabel value="#{bundle.EditTrieOeufParCategorieLabel_entree}" for="entree" />
+                        <p:inputText id="entree" value="#{trieOeufParCategorieController.selected.entree}" title="#{bundle.EditTrieOeufParCategorieTitle_entree}" />
+                        <p:outputLabel value="#{bundle.EditTrieOeufParCategorieLabel_vente}" for="vente" />
+                        <p:inputText id="vente" value="#{trieOeufParCategorieController.selected.vente}" title="#{bundle.EditTrieOeufParCategorieTitle_vente}" />
+                        <p:outputLabel value="#{bundle.EditTrieOeufParCategorieLabel_don}" for="don" />
+                        <p:inputText id="don" value="#{trieOeufParCategorieController.selected.don}" title="#{bundle.EditTrieOeufParCategorieTitle_don}" />
+                        <p:outputLabel value="#{bundle.EditTrieOeufParCategorieLabel_perte}" for="perte" />
+                        <p:inputText id="perte" value="#{trieOeufParCategorieController.selected.perte}" title="#{bundle.EditTrieOeufParCategorieTitle_perte}" />
+                        <p:outputLabel value="#{bundle.EditTrieOeufParCategorieLabel_situationFinale}" for="situationFinale" />
+                        <p:inputText id="situationFinale" value="#{trieOeufParCategorieController.selected.situationFinale}" title="#{bundle.EditTrieOeufParCategorieTitle_situationFinale}" />
+                        <p:outputLabel value="#{bundle.EditTrieOeufParCategorieLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{trieOeufParCategorieController.selected.id}" title="#{bundle.EditTrieOeufParCategorieTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{trieOeufParCategorieController.update}" value="#{bundle.Save}" update="display,:TrieOeufParCategorieListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TrieOeufParCategorieEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TrieOeufParCategorieEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

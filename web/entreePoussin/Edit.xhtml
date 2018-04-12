@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EntreePoussinEditDlg" widgetVar="EntreePoussinEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditEntreePoussinTitle}">
+            <h:form id="EntreePoussinEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{entreePoussinController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_semaine}" for="semaine" />
+                        <p:inputText id="semaine" value="#{entreePoussinController.selected.semaine}" title="#{bundle.EditEntreePoussinTitle_semaine}" />
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_annee}" for="annee" />
+                        <p:inputText id="annee" value="#{entreePoussinController.selected.annee}" title="#{bundle.EditEntreePoussinTitle_annee}" />
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_numeroSemaine}" for="numeroSemaine" />
+                        <p:inputText id="numeroSemaine" value="#{entreePoussinController.selected.numeroSemaine}" title="#{bundle.EditEntreePoussinTitle_numeroSemaine}" />
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_production}" for="production" />
+                        <p:inputText id="production" value="#{entreePoussinController.selected.production}" title="#{bundle.EditEntreePoussinTitle_production}" />
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_poids}" for="poids" />
+                        <p:inputText id="poids" value="#{entreePoussinController.selected.poids}" title="#{bundle.EditEntreePoussinTitle_poids}" />
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_mortalite}" for="mortalite" />
+                        <p:inputText id="mortalite" value="#{entreePoussinController.selected.mortalite}" title="#{bundle.EditEntreePoussinTitle_mortalite}" />
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_transfert}" for="transfert" />
+                        <p:inputText id="transfert" value="#{entreePoussinController.selected.transfert}" title="#{bundle.EditEntreePoussinTitle_transfert}" />
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_vente}" for="vente" />
+                        <p:inputText id="vente" value="#{entreePoussinController.selected.vente}" title="#{bundle.EditEntreePoussinTitle_vente}" />
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_reliquat}" for="reliquat" />
+                        <p:inputText id="reliquat" value="#{entreePoussinController.selected.reliquat}" title="#{bundle.EditEntreePoussinTitle_reliquat}" />
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_productionOeufFournisseur}" for="productionOeufFournisseur" />
+                        <p:selectOneMenu id="productionOeufFournisseur" value="#{entreePoussinController.selected.productionOeufFournisseur}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{productionFournisseurController.itemsAvailableSelectOne}"
+                                           var="productionOeufFournisseurItem"
+                                           itemValue="#{productionOeufFournisseurItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{entreePoussinController.selected.id}" title="#{bundle.EditEntreePoussinTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_dateEntree}" for="dateEntree" />
+                        <p:calendar id="dateEntree" pattern="MM/dd/yyyy HH:mm:ss" value="#{entreePoussinController.selected.dateEntree}" title="#{bundle.EditEntreePoussinTitle_dateEntree}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_totale}" for="totale" />
+                        <p:inputText id="totale" value="#{entreePoussinController.selected.totale}" title="#{bundle.EditEntreePoussinTitle_totale}" />
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{entreePoussinController.selected.description}" title="#{bundle.EditEntreePoussinTitle_description}" />
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_totalMale}" for="totalMale" />
+                        <p:inputText id="totalMale" value="#{entreePoussinController.selected.totalMale}" title="#{bundle.EditEntreePoussinTitle_totalMale}" />
+                        <p:outputLabel value="#{bundle.EditEntreePoussinLabel_totalFemale}" for="totalFemale" />
+                        <p:inputText id="totalFemale" value="#{entreePoussinController.selected.totalFemale}" title="#{bundle.EditEntreePoussinTitle_totalFemale}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{entreePoussinController.update}" value="#{bundle.Save}" update="display,:EntreePoussinListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EntreePoussinEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EntreePoussinEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

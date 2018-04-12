@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TransfertFirmeViewDlg" widgetVar="TransfertFirmeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTransfertFirmeTitle}">
+            <h:form id="TransfertFirmeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{transfertFirmeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTransfertFirmeLabel_firmeSource}"/>
+                        <h:outputText value="#{transfertFirmeController.selected.firmeSource}" title="#{bundle.ViewTransfertFirmeTitle_firmeSource}"/>
+                        <h:outputText value="#{bundle.ViewTransfertFirmeLabel_firmeDestination}"/>
+                        <h:outputText value="#{transfertFirmeController.selected.firmeDestination}" title="#{bundle.ViewTransfertFirmeTitle_firmeDestination}"/>
+                        <h:outputText value="#{bundle.ViewTransfertFirmeLabel_qte}"/>
+                        <h:outputText value="#{transfertFirmeController.selected.qte}" title="#{bundle.ViewTransfertFirmeTitle_qte}"/>
+                        <h:outputText value="#{bundle.ViewTransfertFirmeLabel_dateTransfert}"/>
+                        <h:outputText value="#{transfertFirmeController.selected.dateTransfert}" title="#{bundle.ViewTransfertFirmeTitle_dateTransfert}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTransfertFirmeLabel_id}"/>
+                        <h:outputText value="#{transfertFirmeController.selected.id}" title="#{bundle.ViewTransfertFirmeTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TransfertFirmeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

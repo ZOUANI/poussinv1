@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductionFirmeParGenderCreateDlg" widgetVar="ProductionFirmeParGenderCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProductionFirmeParGenderTitle}">
+            <h:form id="ProductionFirmeParGenderCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productionFirmeParGenderController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProductionFirmeParGenderLabel_effectifDebutJour}" for="effectifDebutJour" />
+                        <p:inputText id="effectifDebutJour" value="#{productionFirmeParGenderController.selected.effectifDebutJour}" title="#{bundle.CreateProductionFirmeParGenderTitle_effectifDebutJour}" />
+                        <p:outputLabel value="#{bundle.CreateProductionFirmeParGenderLabel_mortalite}" for="mortalite" />
+                        <p:inputText id="mortalite" value="#{productionFirmeParGenderController.selected.mortalite}" title="#{bundle.CreateProductionFirmeParGenderTitle_mortalite}" />
+                        <p:outputLabel value="#{bundle.CreateProductionFirmeParGenderLabel_entree}" for="entree" />
+                        <p:inputText id="entree" value="#{productionFirmeParGenderController.selected.entree}" title="#{bundle.CreateProductionFirmeParGenderTitle_entree}" />
+                        <p:outputLabel value="#{bundle.CreateProductionFirmeParGenderLabel_transfert}" for="transfert" />
+                        <p:inputText id="transfert" value="#{productionFirmeParGenderController.selected.transfert}" title="#{bundle.CreateProductionFirmeParGenderTitle_transfert}" />
+                        <p:outputLabel value="#{bundle.CreateProductionFirmeParGenderLabel_vente}" for="vente" />
+                        <p:inputText id="vente" value="#{productionFirmeParGenderController.selected.vente}" title="#{bundle.CreateProductionFirmeParGenderTitle_vente}" />
+                        <p:outputLabel value="#{bundle.CreateProductionFirmeParGenderLabel_effectifFinJour}" for="effectifFinJour" />
+                        <p:inputText id="effectifFinJour" value="#{productionFirmeParGenderController.selected.effectifFinJour}" title="#{bundle.CreateProductionFirmeParGenderTitle_effectifFinJour}" />
+                        <p:outputLabel value="#{bundle.CreateProductionFirmeParGenderLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{productionFirmeParGenderController.selected.id}" title="#{bundle.CreateProductionFirmeParGenderTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{productionFirmeParGenderController.create}" value="#{bundle.Save}" update="display,:ProductionFirmeParGenderListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProductionFirmeParGenderCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProductionFirmeParGenderCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

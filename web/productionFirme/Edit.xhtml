@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductionFirmeEditDlg" widgetVar="ProductionFirmeEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditProductionFirmeTitle}">
+            <h:form id="ProductionFirmeEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productionFirmeController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_entreePoussin}" for="entreePoussin" />
+                        <p:selectOneMenu id="entreePoussin" value="#{productionFirmeController.selected.entreePoussin}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{entreePoussinController.itemsAvailableSelectOne}"
+                                           var="entreePoussinItem"
+                                           itemValue="#{entreePoussinItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_reliquat}" for="reliquat" />
+                        <p:inputText id="reliquat" value="#{productionFirmeController.selected.reliquat}" title="#{bundle.EditProductionFirmeTitle_reliquat}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_age}" for="age" />
+                        <p:inputText id="age" value="#{productionFirmeController.selected.age}" title="#{bundle.EditProductionFirmeTitle_age}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_mortalite}" for="mortalite" />
+                        <p:inputText id="mortalite" value="#{productionFirmeController.selected.mortalite}" title="#{bundle.EditProductionFirmeTitle_mortalite}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_transfert}" for="transfert" />
+                        <p:inputText id="transfert" value="#{productionFirmeController.selected.transfert}" title="#{bundle.EditProductionFirmeTitle_transfert}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_vente}" for="vente" />
+                        <p:inputText id="vente" value="#{productionFirmeController.selected.vente}" title="#{bundle.EditProductionFirmeTitle_vente}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_poids}" for="poids" />
+                        <p:inputText id="poids" value="#{productionFirmeController.selected.poids}" title="#{bundle.EditProductionFirmeTitle_poids}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_numeroSemaine}" for="numeroSemaine" />
+                        <p:inputText id="numeroSemaine" value="#{productionFirmeController.selected.numeroSemaine}" title="#{bundle.EditProductionFirmeTitle_numeroSemaine}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_annee}" for="annee" />
+                        <p:inputText id="annee" value="#{productionFirmeController.selected.annee}" title="#{bundle.EditProductionFirmeTitle_annee}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_semaine}" for="semaine" />
+                        <p:inputText id="semaine" value="#{productionFirmeController.selected.semaine}" title="#{bundle.EditProductionFirmeTitle_semaine}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_firme}" for="firme" />
+                        <p:selectOneMenu id="firme" value="#{productionFirmeController.selected.firme}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{firmeController.itemsAvailableSelectOne}"
+                                           var="firmeItem"
+                                           itemValue="#{firmeItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_adteProductionFirme}" for="adteProductionFirme" />
+                        <p:calendar id="adteProductionFirme" pattern="MM/dd/yyyy HH:mm:ss" value="#{productionFirmeController.selected.adteProductionFirme}" title="#{bundle.EditProductionFirmeTitle_adteProductionFirme}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_productionOeufMale}" for="productionOeufMale" />
+                        <p:selectOneMenu id="productionOeufMale" value="#{productionFirmeController.selected.productionOeufMale}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{productionFirmeParGenderController.itemsAvailableSelectOne}"
+                                           var="productionOeufMaleItem"
+                                           itemValue="#{productionOeufMaleItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_productionOeufFemale}" for="productionOeufFemale" />
+                        <p:selectOneMenu id="productionOeufFemale" value="#{productionFirmeController.selected.productionOeufFemale}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{productionFirmeParGenderController.itemsAvailableSelectOne}"
+                                           var="productionOeufFemaleItem"
+                                           itemValue="#{productionOeufFemaleItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_productionOeufAlimentMale}" for="productionOeufAlimentMale" />
+                        <p:selectOneMenu id="productionOeufAlimentMale" value="#{productionFirmeController.selected.productionOeufAlimentMale}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{productionFirmeAlimentController.itemsAvailableSelectOne}"
+                                           var="productionOeufAlimentMaleItem"
+                                           itemValue="#{productionOeufAlimentMaleItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_productionOeufAlimentFemale}" for="productionOeufAlimentFemale" />
+                        <p:selectOneMenu id="productionOeufAlimentFemale" value="#{productionFirmeController.selected.productionOeufAlimentFemale}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{productionFirmeAlimentController.itemsAvailableSelectOne}"
+                                           var="productionOeufAlimentFemaleItem"
+                                           itemValue="#{productionOeufAlimentFemaleItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_production}" for="production" />
+                        <p:inputText id="production" value="#{productionFirmeController.selected.production}" title="#{bundle.EditProductionFirmeTitle_production}" />
+                        <p:outputLabel value="#{bundle.EditProductionFirmeLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{productionFirmeController.selected.id}" title="#{bundle.EditProductionFirmeTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{productionFirmeController.update}" value="#{bundle.Save}" update="display,:ProductionFirmeListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ProductionFirmeEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProductionFirmeEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductionFirmeAlimentViewDlg" widgetVar="ProductionFirmeAlimentViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProductionFirmeAlimentTitle}">
+            <h:form id="ProductionFirmeAlimentViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productionFirmeAlimentController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProductionFirmeAlimentLabel_typeAliment}"/>
+                        <h:outputText value="#{productionFirmeAlimentController.selected.typeAliment}" title="#{bundle.ViewProductionFirmeAlimentTitle_typeAliment}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeAlimentLabel_situationInitiale}"/>
+                        <h:outputText value="#{productionFirmeAlimentController.selected.situationInitiale}" title="#{bundle.ViewProductionFirmeAlimentTitle_situationInitiale}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeAlimentLabel_entree}"/>
+                        <h:outputText value="#{productionFirmeAlimentController.selected.entree}" title="#{bundle.ViewProductionFirmeAlimentTitle_entree}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeAlimentLabel_consommation}"/>
+                        <h:outputText value="#{productionFirmeAlimentController.selected.consommation}" title="#{bundle.ViewProductionFirmeAlimentTitle_consommation}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeAlimentLabel_transfert}"/>
+                        <h:outputText value="#{productionFirmeAlimentController.selected.transfert}" title="#{bundle.ViewProductionFirmeAlimentTitle_transfert}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeAlimentLabel_vente}"/>
+                        <h:outputText value="#{productionFirmeAlimentController.selected.vente}" title="#{bundle.ViewProductionFirmeAlimentTitle_vente}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeAlimentLabel_situationFinale}"/>
+                        <h:outputText value="#{productionFirmeAlimentController.selected.situationFinale}" title="#{bundle.ViewProductionFirmeAlimentTitle_situationFinale}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeAlimentLabel_id}"/>
+                        <h:outputText value="#{productionFirmeAlimentController.selected.id}" title="#{bundle.ViewProductionFirmeAlimentTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProductionFirmeAlimentViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

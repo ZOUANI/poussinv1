@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductionFirmeViewDlg" widgetVar="ProductionFirmeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewProductionFirmeTitle}">
+            <h:form id="ProductionFirmeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productionFirmeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_entreePoussin}"/>
+                        <h:outputText value="#{productionFirmeController.selected.entreePoussin}" title="#{bundle.ViewProductionFirmeTitle_entreePoussin}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_reliquat}"/>
+                        <h:outputText value="#{productionFirmeController.selected.reliquat}" title="#{bundle.ViewProductionFirmeTitle_reliquat}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_age}"/>
+                        <h:outputText value="#{productionFirmeController.selected.age}" title="#{bundle.ViewProductionFirmeTitle_age}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_mortalite}"/>
+                        <h:outputText value="#{productionFirmeController.selected.mortalite}" title="#{bundle.ViewProductionFirmeTitle_mortalite}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_transfert}"/>
+                        <h:outputText value="#{productionFirmeController.selected.transfert}" title="#{bundle.ViewProductionFirmeTitle_transfert}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_vente}"/>
+                        <h:outputText value="#{productionFirmeController.selected.vente}" title="#{bundle.ViewProductionFirmeTitle_vente}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_poids}"/>
+                        <h:outputText value="#{productionFirmeController.selected.poids}" title="#{bundle.ViewProductionFirmeTitle_poids}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_numeroSemaine}"/>
+                        <h:outputText value="#{productionFirmeController.selected.numeroSemaine}" title="#{bundle.ViewProductionFirmeTitle_numeroSemaine}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_annee}"/>
+                        <h:outputText value="#{productionFirmeController.selected.annee}" title="#{bundle.ViewProductionFirmeTitle_annee}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_semaine}"/>
+                        <h:outputText value="#{productionFirmeController.selected.semaine}" title="#{bundle.ViewProductionFirmeTitle_semaine}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_firme}"/>
+                        <h:outputText value="#{productionFirmeController.selected.firme}" title="#{bundle.ViewProductionFirmeTitle_firme}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_adteProductionFirme}"/>
+                        <h:outputText value="#{productionFirmeController.selected.adteProductionFirme}" title="#{bundle.ViewProductionFirmeTitle_adteProductionFirme}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_productionOeufMale}"/>
+                        <h:outputText value="#{productionFirmeController.selected.productionOeufMale}" title="#{bundle.ViewProductionFirmeTitle_productionOeufMale}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_productionOeufFemale}"/>
+                        <h:outputText value="#{productionFirmeController.selected.productionOeufFemale}" title="#{bundle.ViewProductionFirmeTitle_productionOeufFemale}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_productionOeufAlimentMale}"/>
+                        <h:outputText value="#{productionFirmeController.selected.productionOeufAlimentMale}" title="#{bundle.ViewProductionFirmeTitle_productionOeufAlimentMale}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_productionOeufAlimentFemale}"/>
+                        <h:outputText value="#{productionFirmeController.selected.productionOeufAlimentFemale}" title="#{bundle.ViewProductionFirmeTitle_productionOeufAlimentFemale}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_production}"/>
+                        <h:outputText value="#{productionFirmeController.selected.production}" title="#{bundle.ViewProductionFirmeTitle_production}"/>
+                        <h:outputText value="#{bundle.ViewProductionFirmeLabel_id}"/>
+                        <h:outputText value="#{productionFirmeController.selected.id}" title="#{bundle.ViewProductionFirmeTitle_id}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ProductionFirmeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

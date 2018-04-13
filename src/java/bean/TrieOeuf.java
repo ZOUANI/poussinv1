@@ -61,6 +61,9 @@ public class TrieOeuf implements Serializable {
     }
 
     public Couvoir getCouvoir() {
+        if(couvoir==null){
+            couvoir=new Couvoir();
+        }
         return couvoir;
     }
 

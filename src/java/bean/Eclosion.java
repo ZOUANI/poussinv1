@@ -63,6 +63,9 @@ public class Eclosion implements Serializable {
     }
 
     public TrieOeufParCategorie getTrieOeufParCategorie() {
+        if(trieOeufParCategorie==null){
+            trieOeufParCategorie=new TrieOeufParCategorie();
+        }
         return trieOeufParCategorie;
     }
 

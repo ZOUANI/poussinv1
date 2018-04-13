@@ -52,6 +52,9 @@ public class TrieOeufParCategorie implements Serializable {
  
 
     public TrieOeuf getTrieOeuf() {
+        if(trieOeuf==null){
+            trieOeuf=new TrieOeuf();
+        }
         return trieOeuf;
     }
 

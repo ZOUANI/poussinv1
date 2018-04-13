@@ -1,6 +1,5 @@
-package controler.util;
+package controller.util;
 
-import bean.Departement;
 import bean.User;
 import java.io.IOException;
 import javax.faces.context.FacesContext;

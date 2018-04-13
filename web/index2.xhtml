@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Menu principale</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="resources/css/loginStyle.css" rel="stylesheet"/>
+        <link href="resources/css/jsfcrud.css" rel="stylesheet"/>
+        <link href="resources/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <script src="https://use.fontawesome.com/f567057a6e.js"></script>
+        <link href="resources/css/mine.css" rel="stylesheet"/>
+        <script src="resources/js/jsfcrud.js" language="javaScript"/>
+        <h:outputScript library="js" name="font.js"/>
+        <link rel="stylesheet" href="resources/dist/css/skins/_all-skins.min.css"/>
+
+
+
+        <!-- Font Awesome -->
+        <h:outputStylesheet name="bt337.css"/>
+        <link rel="stylesheet" href="resources/dist/css/AdminLTE.min.css"/>
+        <script src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    </h:head>
+
+
+    #{userController.isNotConnected()}
+    <h:body class="bodyLogin hold-transition skin-blue sidebar-mini sidebar-collapse ">
+        <p:layout fullPage="true">
+
+            <div  style="background-color: #ffffff" align="center">
+
+                <div class="wrapper" style="height: auto; min-height: 100%" align="center">
+                    <p:growl id="growl" life="3000" sticky="true"  />
+
+                    <h:form id="ha">
+                        <header class="main-header">
+                            <a href="/poussinv1/faces/index2.xhtml" class="logo">
+                                <span class="logo-mini"><p:graphicImage id="image" class="imgProfile" style="width: 50px; height: auto"
+                                                                        value="/Users/ayoubmahrouj/Desktop/lock.jpg" 
+                                                                        /></span>
+                                <!-- logo for regular state and mobile devices -->
+                                <span class="logo-lg"><b>BIENVENUE</b></span>
+                            </a>
+                            <!-- Header Navbar: style can be found in header.less -->
+                            <nav class="navbar navbar-static-top">
+                                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                                    <span class="sr-only">Toggle navigation</span>
+                                </a>
+
+                                <div class="navbar-custom-menu">
+                                    <ul class="nav navbar-nav">
+
+
+                                        <li class="dropdown user user-menu">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <img src="../resources/dist/img/user2-160x160.jpg" class="user-image" alt="User Image" />
+                                                <span class="hidden-xs">#{userController.currentUser.nom}</span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <!-- User image -->
+                                                <li class="user-header">
+                                                    <img src="../resources/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+
+                                                    <p>
+                                                        #{userController.currentUser.nom}
+                                                        <p class="text-muted text-center" style="font-size: x-small">ADMINISTRATEUR</p>
+                                                    </p>
+                                                </li>
+                                                <!-- Menu Footer-->
+                                                <li class="user-footer">
+                                                    <div class="pull-left">
+                                                        <p:commandButton action="#" class="btn btn-default"
+                                                                         icon="fa-2x fa fa-user" value="Profil" /> 
+                                                    </div>
+                                                    <div class="pull-right">
+                                                        <p:commandButton ajax="false" action="#{userController.seDeConnnecter()}" class="btn btn-default"
+                                                                         icon="fa-1x fa fa-sign-out" value="Déconnection" /> 
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+
+                        </header>
+                    </h:form>
+
+
+
+
+                    <div class="ui-grid ui-grid-responsive" style="background-color: #ffffff" align="center">
+
+
+            <div class="container" align="center">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <p:panel class="col-md-3" style="border: 0px; width: 30%">
+                                        <a class="menu-link" title="ENTRÉE POUSSINS" href="/poussinv1/faces/entreePoussin/List.xhtml">
+                                            <div class="menu-card">
+                                                <h1><img style="width: 90%;height: 150px" src="resources/img/1.png"></img></h1>
+                                                <h1>ENTRÉE POUSSINS</h1> 
+                                            </div>
+                                        </a>
+                                    </p:panel>
+
+
+                                    <p:panel class="col-md-3" style="border: 0px; width: 30%">
+                                        <a class="menu-link" title="PRODUCTION FERMES" href="/poussinv1/faces/productionFirme/List.xhtml">
+                                            <div class="menu-card">
+                                                <h1><img style="width: 90%;height: 150px" src="resources/img/chik.jpg"></img></h1>
+                                                <h1>PRODUCTION FERMES</h1> 
+                                            </div>
+                                        </a>
+                                    </p:panel>
+
+
+                                    <p:panel class="col-md-3" style="border: 0px; width: 30%">
+                                        <a class="menu-link" title="TRI OEUFS" href="/poussinv1/faces/trieOeuf/List.xhtml">
+                                            <div class="menu-card">
+                                                <h1><img style="width: 90%;height: 150px" src="resources/img/oeufs.jpeg"></img></h1>
+                                                <h1>TRI OEUFS</h1> 
+                                            </div>
+                                        </a>
+                                    </p:panel>
+
+
+                                    <p:panel class="col-md-3" style="border: 0px; width: 30%">
+                                        <a class="menu-link" title="ECLOSION" href="/poussinv1/faces/trieOeuf/List.xhtml">
+                                            <div class="menu-card">
+                                                <h1><img style="width: 90%;height: 150px" src="resources/img/eclosion.png"></img></h1>
+                                                <h1>ECLOSION</h1> 
+                                            </div>
+                                        </a>
+                                    </p:panel>
+
+
+                                    <p:panel class="col-md-3" style="border: 0px; width: 30%">
+                                        <a class="menu-link" title="SUIVI HEBDOMADAIRE" href="/poussinv1/faces/trieOeuf/List.xhtml">
+                                            <div class="menu-card">
+                                                <h1><img style="width: 90%;height: 150px" src="resources/img/hebdo.png"></img></h1>
+                                                <h1>SUIVI HEBDOMADAIRE</h1> 
+                                            </div>
+                                        </a>
+                                    </p:panel>
+
+
+                                    <p:panel class="col-md-3" style="border: 0px; width: 30%">
+                                        <a class="menu-link" title="SUIVI PONTE" href="/poussinv1/faces/trieOeuf/List.xhtml">
+                                            <div class="menu-card">
+                                                <h1><img style="width: 90%;height: 150px" src="resources/img/ponte.png"></img></h1>
+                                                <h1>SUIVI PONTE</h1> 
+                                            </div>
+                                        </a>
+                                    </p:panel>
+
+
+                                    <p:panel class="col-md-3" style="border: 0px; width: 30%">
+                                        <a class="menu-link" title="CONFIGURATION" href="/poussinv1/faces/trieOeuf/List.xhtml">
+                                            <div class="menu-card">
+                                                <h1><img style="width: 90%;height: 150px" src="resources/img/conf.png"></img></h1>
+                                                <h1>CONFIGURATION</h1> 
+                                            </div>
+                                        </a>
+                                    </p:panel>
+
+
+
+
+
+
+                                </div>
+                           </div>
+
+                        </div>
+                    </div>
+                    <!-- AdminLTE App -->
+                    <script src="resources/dist/js/adminlte.min.js"></script>
+                    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+                </div>
+            </div>
+        </p:layout>
+    </h:body>
+
+
+</html>

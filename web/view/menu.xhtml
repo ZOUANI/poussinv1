@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.oxhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+
+    <ui:define name="menu">
+
+
+
+
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="../resources/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                    </div>
+                    <div class="pull-left info">
+                        <p>#{userController.currentUser.nom}</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <!-- search form -->
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search..." />
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+
+
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">MENU</li>
+
+                    <li class="active treeview">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-user"></i> <span>COLLABORATEUR</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="active"><a href="../client/List.xhtml"><i class="fa fa-users"></i> CLIENT</a></li>
+                            <li><a href="../fournisseur/List.xhtml"><i class="fa fa-user-secret"></i> FOURNISSEUR</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-plus"></i> <span>ACHAT</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="../achat/Create.xhtml"><i class="fa fa fa-cart-plus"></i> Acheter</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-minus"></i> <span>VENTE</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="../venteItem/Create.xhtml"><i class="fa fa-shopping-basket"></i> Vendre</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-euro"></i> <span>PAIEMENT</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="../paiementClient/List.xhtml"><i class="fa fa-money"><i class="fa fa-user"/> Paiement Client</i></a></li>
+                            <li><a href="../paiementFournisseur/List.xhtml"><i class="fa fa-money"><i class="fa fa-user-secret"/> Paiement Fournisseur</i></a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-sort"></i> <span>AVOIR</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="../avoirClient/List.xhtml"><i class="fa fa-exchange"><i class="fa fa-user"/> Avoir Client</i></a></li>
+                            <li><a href="../avoirFournisseur/List.xhtml"><i class="fa fa-exchange"><i class="fa fa-user-secret"/> Avoir Fournisseur</i></a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-search"></i> <span>CONSULTATION</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="treeview">
+                                <a href="#"><i class="fa fa-database"></i> Mon Stock
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="../produit/List.xhtml"><i class="fa fa-product-hunt"></i> Liste Des Produits</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="../statistique/List.xhtml"><i class="fa fa-bar-chart"></i> Mes Statistiques</a></li>
+                            <li><a href="../achatItem/List.xhtml"><i class="fa fa-cart-plus"></i> Mes Achats</a></li>
+                            <li><a href="../consultation/List.xhtml"><i class="fa fa-shopping-basket"></i> Mes Ventes</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-wrench"></i> <span>CONFIGURATION</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="../societe/List.xhtml"><i class="fa fa-wrench"><i class="fa fa-user-circle-o"/> Ma Societe</i></a></li>
+                            <li><a href="../user/edit.xhtml"><i class="fa fa-wrench"><i class="fa fa-user"/> Mon Profile</i></a></li>
+                            <li><a href="../user/admin.xhtml"><i class="fa fa-wrench"><i class="fa fa-user"/> Gestion Utilisateurs</i></a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+
+
+
+
+
+
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+
+
+
+
+    </ui:define>
+</html>

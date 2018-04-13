@@ -1,245 +1,42 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <title>#{bundle.Authentification}</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
+        <h:outputStylesheet name="css/loginStyle.css"/>
+        <h:outputScript library="js" name="font.js"/>
     </h:head>
-    <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
-        <br />
-        <h:link outcome="/categorieOeuf/List" value="Show All CategorieOeuf Items"/>
-        <br />
-        <h:link outcome="/couvoir/List" value="Show All Couvoir Items"/>
-        <br />
-        <h:link outcome="/eclosion/List" value="Show All Eclosion Items"/>
-        <br />
-        <h:link outcome="/entreePoussin/List" value="Show All EntreePoussin Items"/>
-        <br />
-        <h:link outcome="/firme/List" value="Show All Firme Items"/>
-        <br />
-        <h:link outcome="/fournisseur/List" value="Show All Fournisseur Items"/>
-        <br />
-        <h:link outcome="/productionFirme/List" value="Show All ProductionFirme Items"/>
-        <br />
-        <h:link outcome="/productionFirmeAliment/List" value="Show All ProductionFirmeAliment Items"/>
-        <br />
-        <h:link outcome="/productionFirmeParGender/List" value="Show All ProductionFirmeParGender Items"/>
-        <br />
-        <h:link outcome="/productionFournisseur/List" value="Show All ProductionFournisseur Items"/>
-        <br />
-        <h:link outcome="/transfertCouvoir/List" value="Show All TransfertCouvoir Items"/>
-        <br />
-        <h:link outcome="/transfertFirme/List" value="Show All TransfertFirme Items"/>
-        <br />
-        <h:link outcome="/trieOeuf/List" value="Show All TrieOeuf Items"/>
-        <br />
-        <h:link outcome="/trieOeufParCategorie/List" value="Show All TrieOeufParCategorie Items"/>
-        <br />
-        <h:link outcome="/typeAliment/List" value="Show All TypeAliment Items"/>
-        <br />
-        <h:link outcome="/categorieOeuf/List" value="Show All CategorieOeuf Items"/>
-        <br />
-        <h:link outcome="/couvoir/List" value="Show All Couvoir Items"/>
-        <br />
-        <h:link outcome="/eclosion/List" value="Show All Eclosion Items"/>
-        <br />
-        <h:link outcome="/entreePoussin/List" value="Show All EntreePoussin Items"/>
-        <br />
-        <h:link outcome="/firme/List" value="Show All Firme Items"/>
-        <br />
-        <h:link outcome="/fournisseur/List" value="Show All Fournisseur Items"/>
-        <br />
-        <h:link outcome="/productionFirme/List" value="Show All ProductionFirme Items"/>
-        <br />
-        <h:link outcome="/productionFirmeAliment/List" value="Show All ProductionFirmeAliment Items"/>
-        <br />
-        <h:link outcome="/productionFirmeParGender/List" value="Show All ProductionFirmeParGender Items"/>
-        <br />
-        <h:link outcome="/productionFournisseur/List" value="Show All ProductionFournisseur Items"/>
-        <br />
-        <h:link outcome="/transfertCouvoir/List" value="Show All TransfertCouvoir Items"/>
-        <br />
-        <h:link outcome="/transfertFirme/List" value="Show All TransfertFirme Items"/>
-        <br />
-        <h:link outcome="/trieOeuf/List" value="Show All TrieOeuf Items"/>
-        <br />
-        <h:link outcome="/trieOeufParCategorie/List" value="Show All TrieOeufParCategorie Items"/>
-        <br />
-        <h:link outcome="/typeAliment/List" value="Show All TypeAliment Items"/>
-        <br />
-        <h:link outcome="/categorieOeuf/List" value="Show All CategorieOeuf Items"/>
-        <br />
-        <h:link outcome="/couvoir/List" value="Show All Couvoir Items"/>
-        <br />
-        <h:link outcome="/eclosion/List" value="Show All Eclosion Items"/>
-        <br />
-        <h:link outcome="/entreePoussin/List" value="Show All EntreePoussin Items"/>
-        <br />
-        <h:link outcome="/firme/List" value="Show All Firme Items"/>
-        <br />
-        <h:link outcome="/fournisseur/List" value="Show All Fournisseur Items"/>
-        <br />
-        <h:link outcome="/productionFirme/List" value="Show All ProductionFirme Items"/>
-        <br />
-        <h:link outcome="/productionFirmeAliment/List" value="Show All ProductionFirmeAliment Items"/>
-        <br />
-        <h:link outcome="/productionFirmeParGender/List" value="Show All ProductionFirmeParGender Items"/>
-        <br />
-        <h:link outcome="/productionFournisseur/List" value="Show All ProductionFournisseur Items"/>
-        <br />
-        <h:link outcome="/transfertCouvoir/List" value="Show All TransfertCouvoir Items"/>
-        <br />
-        <h:link outcome="/transfertFirme/List" value="Show All TransfertFirme Items"/>
-        <br />
-        <h:link outcome="/trieOeuf/List" value="Show All TrieOeuf Items"/>
-        <br />
-        <h:link outcome="/trieOeufParCategorie/List" value="Show All TrieOeufParCategorie Items"/>
-        <br />
-        <h:link outcome="/typeAliment/List" value="Show All TypeAliment Items"/>
-        <br />
-        <h:link outcome="/categorieOeuf/List" value="Show All CategorieOeuf Items"/>
-        <br />
-        <h:link outcome="/couvoir/List" value="Show All Couvoir Items"/>
-        <br />
-        <h:link outcome="/eclosion/List" value="Show All Eclosion Items"/>
-        <br />
-        <h:link outcome="/entreePoussin/List" value="Show All EntreePoussin Items"/>
-        <br />
-        <h:link outcome="/firme/List" value="Show All Firme Items"/>
-        <br />
-        <h:link outcome="/fournisseur/List" value="Show All Fournisseur Items"/>
-        <br />
-        <h:link outcome="/productionFirme/List" value="Show All ProductionFirme Items"/>
-        <br />
-        <h:link outcome="/productionFirmeAliment/List" value="Show All ProductionFirmeAliment Items"/>
-        <br />
-        <h:link outcome="/productionFirmeParGender/List" value="Show All ProductionFirmeParGender Items"/>
-        <br />
-        <h:link outcome="/productionFournisseur/List" value="Show All ProductionFournisseur Items"/>
-        <br />
-        <h:link outcome="/transfertCouvoir/List" value="Show All TransfertCouvoir Items"/>
-        <br />
-        <h:link outcome="/transfertFirme/List" value="Show All TransfertFirme Items"/>
-        <br />
-        <h:link outcome="/trieOeuf/List" value="Show All TrieOeuf Items"/>
-        <br />
-        <h:link outcome="/trieOeufParCategorie/List" value="Show All TrieOeufParCategorie Items"/>
-        <br />
-        <h:link outcome="/typeAliment/List" value="Show All TypeAliment Items"/>
-        <br />
-        <h:link outcome="/backup/List" value="Show All Backup Items"/>
-        <br />
-        <h:link outcome="/categorieOeuf/List" value="Show All CategorieOeuf Items"/>
-        <br />
-        <h:link outcome="/couvoir/List" value="Show All Couvoir Items"/>
-        <br />
-        <h:link outcome="/device/List" value="Show All Device Items"/>
-        <br />
-        <h:link outcome="/eclosion/List" value="Show All Eclosion Items"/>
-        <br />
-        <h:link outcome="/entreePoussin/List" value="Show All EntreePoussin Items"/>
-        <br />
-        <h:link outcome="/firme/List" value="Show All Firme Items"/>
-        <br />
-        <h:link outcome="/fournisseur/List" value="Show All Fournisseur Items"/>
-        <br />
-        <h:link outcome="/historiqueConnexionUser/List" value="Show All HistoriqueConnexionUser Items"/>
-        <br />
-        <h:link outcome="/productionFirme/List" value="Show All ProductionFirme Items"/>
-        <br />
-        <h:link outcome="/productionFirmeAliment/List" value="Show All ProductionFirmeAliment Items"/>
-        <br />
-        <h:link outcome="/productionFirmeParGender/List" value="Show All ProductionFirmeParGender Items"/>
-        <br />
-        <h:link outcome="/productionFournisseur/List" value="Show All ProductionFournisseur Items"/>
-        <br />
-        <h:link outcome="/question/List" value="Show All Question Items"/>
-        <br />
-        <h:link outcome="/transfertCouvoir/List" value="Show All TransfertCouvoir Items"/>
-        <br />
-        <h:link outcome="/transfertFirme/List" value="Show All TransfertFirme Items"/>
-        <br />
-        <h:link outcome="/trieOeuf/List" value="Show All TrieOeuf Items"/>
-        <br />
-        <h:link outcome="/trieOeufParCategorie/List" value="Show All TrieOeufParCategorie Items"/>
-        <br />
-        <h:link outcome="/typeAliment/List" value="Show All TypeAliment Items"/>
-        <br />
-        <h:link outcome="/user/List" value="Show All User Items"/>
+    <!--#/{userController.isConnected()}-->
+    <h:body class="bodyLogin">
+        <br></br>
+        <h3 style="text-align: center">Connectez-vous à votre compte</h3>
+        <div class="login-card">
+            <img src="resources/img/14.jpg" style="border-radius: 100%; width: 100px; height: auto"/><br/>
+
+            <h:form>
+                <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+                <h:panelGrid columns="1" cellpadding="5" width="100%">
+                    <p:inputText style="width: 95%; height: 25px" id="username" value="#{userController.selected.login}" required="true" label="username"
+                                 placeholder="Saisissez votre login" />
+
+                    <p:password id="password" style="width: 95%; height: 25px" value="#{userController.selected.password}" required="true" label="password"
+                                placeholder="Saisissez votre mot de passe" />
+
+                    <f:facet name="footer">
+                        <p:commandButton value="LOGIN" style=" text-align: center;font-size: 14px;
+                                         font-family: 'Arial', sans-serif;font-weight: 700;height: 36px;padding: 0 8px;
+                                         width: 100%;display: block;margin-bottom: 10px;position: relative;"
+                                         update="growl" action="#{userController.seConnecter()}"/>
+                    </f:facet>  
+                </h:panelGrid>
+            </h:form>
+        </div>
     </h:body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

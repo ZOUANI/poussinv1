@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="header">
+
+
+
+
+
+        <h:form id="ha">
+            <header class="main-header">
+                <a href="/easyStockPro/faces/index2.xhtml" class="logo">
+                    <span class="logo-mini"><p:graphicImage url="../resources/image/me.jp" alt="logo" /></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><b>BIENVENUE</b></span>
+                </a>
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top">
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="../resources/dist/img/user2-160x160.jpg" class="user-image" alt="User Image" />
+                                    <span class="hidden-xs">#{userController.currentUser.nom}</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        <img src="../resources/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+
+                                        <p>
+                                            #{userController.currentUser.nom}
+                                            <p class="text-muted text-center" style="font-size: x-small">#{userController.currentUser.typeUser}</p>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <p:commandButton action="#" class="btn btn-default"
+                                                             icon="fa-2x fa fa-user" value="Profil" /> 
+                                        </div>
+                                        <div class="pull-right">
+                                            <p:commandButton ajax="false" action="#{userController.seDeConnnecter()}" class="btn btn-default"
+                                                             icon="fa-1x fa fa-sign-out" value="Déconnection" /> 
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+            </header>
+        </h:form>
+
+    </ui:define>
+</html>

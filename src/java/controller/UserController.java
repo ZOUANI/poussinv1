@@ -3,6 +3,10 @@ package controller;
 import bean.User;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
+import controller.util.Message;
+import controller.util.MessageManager;
+import controller.util.SessionUtil;
+import java.io.IOException;
 import service.UserFacade;
 
 import java.io.Serializable;
@@ -27,11 +31,15 @@ public class UserController implements Serializable {
     private service.UserFacade ejbFacade;
     private List<User> items = null;
     private User selected;
+    private Message message;
 
     public UserController() {
     }
 
     public User getSelected() {
+        if(selected==null){
+            selected=new User();
+        }
         return selected;
     }
 
@@ -162,4 +170,52 @@ public class UserController implements Serializable {
 
     }
 
+    
+
+    private void validteConnexionForm(int res) {
+        message = MessageManager.createErrorMessage(res, "");
+        if (res == -2) {
+            message.setText("Merci de remplir le formulaire");
+        } else if (res == -1) {
+            message.setText("Erreur password, Réessayer SVP");
+        } else if (res == 0) {
+            message.setText("Erreur login, Réessayer SVP");
+        }
+        MessageManager.showMessage(message);
+    }
+
+    public String seConnecter() {
+        int res = ejbFacade.seConnecter(selected);
+        if (res > 0) {
+            return "index2.xhtml?faces-redirect=true";
+        }
+        validteConnexionForm(res);
+        return null;
+    }
+
+    public void isConnected() throws IOException {
+        if (SessionUtil.getConnectedUser() != null) {
+            System.out.println("ana hhhhh");
+            SessionUtil.redirect("/index2");
+        }
+    }
+
+    public void isNotConnected() throws IOException {
+        if (SessionUtil.getConnectedUser() == null) {
+            System.out.println("fdfdf");
+            SessionUtil.redirect("/poussinv1/faces/index");
+        }
+    }
+
+    public String seDeConnnecter() {
+        System.out.println("jiji");
+        ejbFacade.seDeConnnecter();
+        return "/index?faces-redirect=true";
+    }
+
+     public User getCurrentUser() {
+        return SessionUtil.getConnectedUser();
+    }
+
+   
 }

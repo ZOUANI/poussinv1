@@ -32,6 +32,9 @@ public class EclosionController implements Serializable {
     }
 
     public Eclosion getSelected() {
+        if(selected==null){
+            selected=new Eclosion();
+        }
         return selected;
     }
 

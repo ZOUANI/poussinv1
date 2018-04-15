@@ -18,9 +18,10 @@
                 <li><a href="/easyStockPro/faces/index2.xhtml"><i class="fa fa-home"></i> INDEX</a></li>
                 <li>Production Fournisseur </li><li> Ajouter Production Fournisseur</li>
             </ol>
+        <br></br><br></br>
         </ui:define>
-
         <ui:define name="body">
+        <br></br>
 
 
             <div class="ui-grid-row">
@@ -41,14 +42,14 @@
                                             <p:outputLabel value="&emsp;"/>
                                             <p:outputLabel value="Code:"/><p:outputLabel value="&emsp;"/>
                                             <p:inputText  id="code"
-                                                          value="#{productionFournisseurController.selected.code}" />
+                                                          value="#{productionFournisseurItemController.productionFournisseur.code}" />
 
                                         </div>
                                         <div class="col-md-4">
                                             <p:outputLabel value="Fournisseur:" style="position: inherit; bottom: 10px" /><p:outputLabel value="&emsp;"/>
                                             <p:selectOneMenu style="width: 150px" filter="true" filterMatchMode="contains"
                                                              id="libel"
-                                                             value="#{productionFournisseurController.selected.fournisseur}">
+                                                             value="#{productionFournisseurItemController.productionFournisseur.fournisseur}">
                                                 <f:selectItem itemValue="#{null}" itemLabel="--TOUT--"/>
                                                 <f:selectItems value="#{fournisseurController.items}"
                                                                var="f"
@@ -60,45 +61,97 @@
                                             <p:outputLabel value="&emsp;"/>
                                             <p:outputLabel value="Description:" style="position: inherit; bottom: 20px"/><p:outputLabel value="&emsp;"/>
                                             <p:inputTextarea rows="2"  id="desc"
-                                                             value="#{productionFournisseurController.selected.description}" />
+                                                             value="#{productionFournisseurItemController.productionFournisseur.description}" />
 
                                         </div>
 
-                                    </div>
-
-                                </p:panel>
-                                <p:panel>
-                                    <div class="row">
-
-                                        <div class="col-md-4">
-                                            <p:outputLabel value="Numero Semaine:"/><p:outputLabel value="&emsp;"/>
-                                            <p:inputText  id="numS" disabled="true"
-                                                          value="#{productionFournisseurItemController.selected.numeroSemaine}" />
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <p:outputLabel value="&emsp;"/>
-                                            <p:outputLabel value="&emsp;"/>
-                                            <p:outputLabel value="&emsp;"/>
-                                            <p:outputLabel value="Poids:"/><p:outputLabel value="&emsp;"/>
-                                            <p:inputText  id="p"
-                                                          value="#{productionFournisseurItemController.selected.poids}" />
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <p:outputLabel value="Nombre Oeufs:"/><p:outputLabel value="&emsp;"/>
-                                            <p:inputText  id="nbrO"
-                                                          value="#{productionFournisseurItemController.selected.nbrOeuf}" />
-                                        </div>
-
-                                        <div align="right">
-                                        <p:commandButton value="Ajouter"/>
-                                        </div>
                                     </div>
 
                                 </p:panel>
                             </div>
                         </div>
+                        <br></br><br></br>
+
+                        <p:panel>
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-12">
+                                <br></br>
+                                <div class="box-body">
+                                    <div class="col-md-6" align="left">
+
+                                        <p:panelGrid columns="2" columnClasses="col-md-4,col-md-3">
+                                            <p:outputLabel value="Nombre Oeufs:"/>
+                                            <p:inputText  id="nbrO"
+                                                          value="#{productionFournisseurItemController.selected.nbrOeuf}" />
+
+                                            <p:outputLabel value="POIDS:"/>
+                                            <p:inputText  id="p"
+                                                          value="#{productionFournisseurItemController.selected.poids}" />
+
+                                            <p:outputLabel value="Numero Semaine:"/>
+                                            <p:inputText  id="numS" disabled="true"
+                                                          value="#{productionFournisseurItemController.selected.numeroSemaine}" />
+
+                                        </p:panelGrid>
+                                        <p:commandButton value="Ajouter au Panier"  icon="ui-icon-plus"
+                                                         actionListener="#{productionFournisseurItemController.addToPanier()}"
+                                                         update=":ProductionFournisseurCreateForm"/>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <p:dataTable id="tt" var="item" value="#{productionFournisseurItemController.panier}" editable="true" scrollable="true" resizableColumns="true"
+                                                     scrollHeight="200"
+                                                     rowKey="#{item.id}"
+                                                     editMode="cell"
+                                                     widgetVar="cellCars">
+                                            <p:ajax event="cellEdit" listener="#{productionFournisseurItemController.onCellEdit}" update=":ProductionFournisseurCreateForm:tt" />
+
+                                            <f:facet name="header">
+                                                #{item}
+                                            </f:facet>
+
+                                            <p:column style="width: 6%" footerText="POIDS" headerText="POIDS">
+                                                <p:cellEditor>
+                                                    <f:facet name="output"><h:outputText value="#{item.poids}" style="width: 100px" /></f:facet>
+                                                    <f:facet name="input"><p:inputText value="#{item.poids}" style="width:100px" label="POIDS" >
+                                                            <p:ajax event="blur" update=":ProductionFournisseurCreateForm:tt" /></p:inputText></f:facet>
+                                                </p:cellEditor>
+                                            </p:column>
+
+
+                                            <p:column style="width: 6%" footerText="NOMBRE OEUFS" headerText="NOMBRE OEUFS">
+                                                <p:cellEditor>
+                                                    <f:facet name="output"><h:outputText value="#{item.nbrOeuf}" style="width: 10px" /></f:facet>
+                                                    <f:facet name="input"><p:inputText value="#{item.nbrOeuf}" style="width:10px" label="NOMBRE OEUFS" >
+                                                            <p:ajax event="blur" update=":ProductionFournisseurCreateForm:tt" /></p:inputText></f:facet>
+                                                </p:cellEditor>
+                                            </p:column>
+
+                                            <p:column style="width: 10%" footerText="NUMERO SEMAINE" headerText="NUMERO SEMAINE">
+                                                <h:outputText 
+                                                    value="#{item.numeroSemaine}" />
+                                            </p:column>
+
+                                        </p:dataTable>
+
+                                        <p:contextMenu for="tt" widgetVar="cMenu">   
+                                            <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>  
+                                            <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
+
+                                        </p:contextMenu> 
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </p:panel>
+                        
+                        <br></br>
+                        
+                        <p:commandButton value="ENREGISTRER" actionListener="#{productionFournisseurItemController.save()}"
+                                         update=":ProductionFournisseurCreateForm" icon="ui-icon-check"/>
 
                     </h:form>
                 </div>

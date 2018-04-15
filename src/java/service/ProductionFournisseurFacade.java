@@ -28,5 +28,11 @@ public class ProductionFournisseurFacade extends AbstractFacade<ProductionFourni
     public ProductionFournisseurFacade() {
         super(ProductionFournisseur.class);
     }
+
+
+    public Long generateId() {
+        Long maxId = (Long) em.createQuery("SELECT MAX(tp.id) FROM ProductionFournisseur tp").getSingleResult();
+        return (maxId == null ? 1l : maxId + 1);
+    }
     
 }

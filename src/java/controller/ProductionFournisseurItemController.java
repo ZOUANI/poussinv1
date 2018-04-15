@@ -1,11 +1,13 @@
 package controller;
 
+import bean.ProductionFournisseur;
 import bean.ProductionFournisseurItem;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
 import service.ProductionFournisseurItemFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -14,10 +16,13 @@ import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import org.primefaces.event.CellEditEvent;
+import service.ProductionFournisseurFacade;
 
 @Named("productionFournisseurItemController")
 @SessionScoped
@@ -25,15 +30,58 @@ public class ProductionFournisseurItemController implements Serializable {
 
     @EJB
     private service.ProductionFournisseurItemFacade ejbFacade;
+    @EJB
+    private ProductionFournisseurFacade productionFournisseurFacade;
+
     private List<ProductionFournisseurItem> items = null;
     private ProductionFournisseurItem selected;
+    private List<ProductionFournisseurItem> panier;
+    private ProductionFournisseur productionFournisseur;
 
     public ProductionFournisseurItemController() {
     }
 
+    public ProductionFournisseur getProductionFournisseur() {
+        if(productionFournisseur==null){
+            productionFournisseur=new ProductionFournisseur();
+        }
+        return productionFournisseur;
+    }
+
+    public void setProductionFournisseur(ProductionFournisseur productionFournisseur) {
+        this.productionFournisseur = productionFournisseur;
+    }
+
+    public ProductionFournisseurFacade getProductionFournisseurFacade() {
+        return productionFournisseurFacade;
+    }
+
+    public void setProductionFournisseurFacade(ProductionFournisseurFacade productionFournisseurFacade) {
+        this.productionFournisseurFacade = productionFournisseurFacade;
+    }
+
+    public ProductionFournisseurItemFacade getEjbFacade() {
+        return ejbFacade;
+    }
+
+    public void setEjbFacade(ProductionFournisseurItemFacade ejbFacade) {
+        this.ejbFacade = ejbFacade;
+    }
+
+    public List<ProductionFournisseurItem> getPanier() {
+        if (panier == null) {
+            panier = new ArrayList<>();
+        }
+        return panier;
+    }
+
+    public void setPanier(List<ProductionFournisseurItem> panier) {
+        this.panier = panier;
+    }
+
     public ProductionFournisseurItem getSelected() {
-        if(selected==null){
-            selected=new ProductionFournisseurItem();
+        if (selected == null) {
+            selected = new ProductionFournisseurItem();
         }
         return selected;
     }
@@ -163,6 +211,45 @@ public class ProductionFournisseurItemController implements Serializable {
             }
         }
 
+    }
+
+    public List<ProductionFournisseurItem> addToPanier() {
+        getPanier().add(selected);
+        selected=new ProductionFournisseurItem();
+        return panier;
+    }
+
+    public void save() {
+        ////////////////////////////////////////////////save ProductionFournisseur
+        getProductionFournisseur().setId(getProductionFournisseurFacade().generateId());
+        getProductionFournisseurFacade().create(selected.getProductionFournisseur());
+
+        ////////////////////////////////////////////////save ProductionFournisseurItem
+        System.out.println("panier "+panier);
+        for (ProductionFournisseurItem item : panier) {
+            item.getProductionFournisseur().setId(productionFournisseur.getId());
+            getFacade().create(item);
+        }
+
+        erase();
+        JsfUtil.addSuccessMessage("L'opération a été bien effectuée");
+    }
+
+    
+    public void erase() {
+        selected = new ProductionFournisseurItem();
+        panier = null;
+        panier = new ArrayList<>();
+    }
+
+    public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+
+        if (newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
     }
 
 }

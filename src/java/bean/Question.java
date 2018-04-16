@@ -22,7 +22,7 @@ public class Question implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY) // it doesn't work with abstractFacade.generateId("Object","id");
-    @GeneratedValue(strategy = GenerationType.AUTO) // modified By YOUSSEF BENIHOUD 24/06/2017
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // modified By YOUSSEF BENIHOUD 24/06/2017
     private Long id;
     private String question;
     private String reponse;

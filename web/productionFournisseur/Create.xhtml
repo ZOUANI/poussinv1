@@ -33,19 +33,20 @@
                             <div class="ui-grid-col-12">
                                 <p:panel>
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <p:outputLabel value="&emsp;"/>
-                                            <p:outputLabel value="&emsp;"/>
-                                            <p:outputLabel value="&emsp;"/>
-                                            <p:outputLabel value="&emsp;"/>
-                                            <p:outputLabel value="&emsp;"/>
-                                            <p:outputLabel value="&emsp;"/>
+                                        <div class="col-md-2">
+                                            <p:outputLabel value="ID:"/><p:outputLabel value="&emsp;"/>
+                                            <p:inputText  id="ide" size="10" disabled="true"
+                                                          value="#{productionFournisseurItemController.generateIdProductionFournisseur()}" />
+
+                                        </div>
+
+                                        <div class="col-md-3">
                                             <p:outputLabel value="Code:"/><p:outputLabel value="&emsp;"/>
                                             <p:inputText  id="code"
                                                           value="#{productionFournisseurItemController.productionFournisseur.code}" />
 
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <p:outputLabel value="Fournisseur:" style="position: inherit; bottom: 10px" /><p:outputLabel value="&emsp;"/>
                                             <p:selectOneMenu style="width: 150px" filter="true" filterMatchMode="contains"
                                                              id="libel"
@@ -58,7 +59,6 @@
 
                                         </div>
                                         <div class="col-md-4">
-                                            <p:outputLabel value="&emsp;"/>
                                             <p:outputLabel value="Description:" style="position: inherit; bottom: 20px"/><p:outputLabel value="&emsp;"/>
                                             <p:inputTextarea rows="2"  id="desc"
                                                              value="#{productionFournisseurItemController.productionFournisseur.description}" />
@@ -151,7 +151,7 @@
                         <br></br>
                         
                         <p:commandButton value="ENREGISTRER" actionListener="#{productionFournisseurItemController.save()}"
-                                         update=":ProductionFournisseurCreateForm" icon="ui-icon-check"/>
+                                         update=":ProductionFournisseurCreateForm, :growl" icon="ui-icon-check"/>
 
                     </h:form>
                 </div>

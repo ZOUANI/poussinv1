@@ -213,6 +213,14 @@ public class ProductionFournisseurItemController implements Serializable {
 
     }
 
+    public Long generateIdProductionFournisseur() {
+        return getProductionFournisseurFacade().generateId();
+    }
+
+    public Long generateIdProductionFournisseurItem() {
+        return getEjbFacade().generateId();
+    }
+
     public List<ProductionFournisseurItem> addToPanier() {
         getPanier().add(selected);
         selected=new ProductionFournisseurItem();
@@ -221,13 +229,14 @@ public class ProductionFournisseurItemController implements Serializable {
 
     public void save() {
         ////////////////////////////////////////////////save ProductionFournisseur
-        getProductionFournisseur().setId(getProductionFournisseurFacade().generateId());
-        getProductionFournisseurFacade().create(selected.getProductionFournisseur());
+        getProductionFournisseur().setId(generateIdProductionFournisseur());
+        getProductionFournisseurFacade().create(getProductionFournisseur());
 
         ////////////////////////////////////////////////save ProductionFournisseurItem
         System.out.println("panier "+panier);
         for (ProductionFournisseurItem item : panier) {
             item.getProductionFournisseur().setId(productionFournisseur.getId());
+            item.setId(generateIdProductionFournisseurItem());
             getFacade().create(item);
         }
 
@@ -238,6 +247,7 @@ public class ProductionFournisseurItemController implements Serializable {
     
     public void erase() {
         selected = new ProductionFournisseurItem();
+        productionFournisseur=new ProductionFournisseur();
         panier = null;
         panier = new ArrayList<>();
     }

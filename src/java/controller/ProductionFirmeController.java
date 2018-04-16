@@ -32,6 +32,9 @@ public class ProductionFirmeController implements Serializable {
     }
 
     public ProductionFirme getSelected() {
+        if(selected==null){
+            selected=new ProductionFirme();
+        }
         return selected;
     }
 

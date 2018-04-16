@@ -6,32 +6,105 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition>
+    <ui:composition template="/template.xhtml">
 
-        <p:dialog id="ProductionFournisseurCreateDlg" widgetVar="ProductionFournisseurCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProductionFournisseurTitle}">
-            <h:form id="ProductionFournisseurCreateForm">
-                <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{productionFournisseurController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateProductionFournisseurLabel_fournisseur}" for="fournisseur" />
-                        <p:selectOneMenu id="fournisseur" value="#{productionFournisseurController.selected.fournisseur}" >
-                            <f:selectItems value="#{fournisseurController.itemsAvailableSelectOne}"
-                                           var="fournisseurItem"
-                                           itemValue="#{fournisseurItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateProductionFournisseurLabel_numeroSemaine}" for="numeroSemaine" />
-                        <p:inputText id="numeroSemaine" value="#{productionFournisseurController.selected.numeroSemaine}" title="#{bundle.CreateProductionFournisseurTitle_numeroSemaine}" />
-                        <p:outputLabel value="#{bundle.CreateProductionFournisseurLabel_nbrOeuf}" for="nbrOeuf" />
-                        <p:inputText id="nbrOeuf" value="#{productionFournisseurController.selected.nbrOeuf}" title="#{bundle.CreateProductionFournisseurTitle_nbrOeuf}" />
-                        <p:outputLabel value="#{bundle.CreateProductionFournisseurLabel_poids}" for="poids" />
-                        <p:inputText id="poids" value="#{productionFournisseurController.selected.poids}" title="#{bundle.CreateProductionFournisseurTitle_poids}" />
-                        <p:outputLabel value="#{bundle.CreateProductionFournisseurLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{productionFournisseurController.selected.id}" title="#{bundle.CreateProductionFournisseurTitle_id}" />
-                    </p:panelGrid>
-                    <p:commandButton actionListener="#{productionFournisseurController.create}" value="#{bundle.Save}" update="display,:ProductionFournisseurListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProductionFournisseurCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="ProductionFournisseurCreateDialog.hide()"/>
-                </h:panelGroup>
-            </h:form>
-        </p:dialog>
+
+
+        <ui:define name="band">
+            <h1>
+                Ajouter Production Fournisseur
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/easyStockPro/faces/index2.xhtml"><i class="fa fa-home"></i> INDEX</a></li>
+                <li>Production Fournisseur </li><li> Ajouter Production Fournisseur</li>
+            </ol>
+        </ui:define>
+
+        <ui:define name="body">
+
+
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-12">
+
+                    <h:form id="ProductionFournisseurCreateForm">
+
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-12">
+                                <p:panel>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <p:outputLabel value="&emsp;"/>
+                                            <p:outputLabel value="&emsp;"/>
+                                            <p:outputLabel value="&emsp;"/>
+                                            <p:outputLabel value="&emsp;"/>
+                                            <p:outputLabel value="&emsp;"/>
+                                            <p:outputLabel value="&emsp;"/>
+                                            <p:outputLabel value="Code:"/><p:outputLabel value="&emsp;"/>
+                                            <p:inputText  id="code"
+                                                          value="#{productionFournisseurController.selected.code}" />
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p:outputLabel value="Fournisseur:" style="position: inherit; bottom: 10px" /><p:outputLabel value="&emsp;"/>
+                                            <p:selectOneMenu style="width: 150px" filter="true" filterMatchMode="contains"
+                                                             id="libel"
+                                                             value="#{productionFournisseurController.selected.fournisseur}">
+                                                <f:selectItem itemValue="#{null}" itemLabel="--TOUT--"/>
+                                                <f:selectItems value="#{fournisseurController.items}"
+                                                               var="f"
+                                                               itemValue="#{f}" itemLabel="{ #{f.id} } #{f.nom}"/>
+                                            </p:selectOneMenu>
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p:outputLabel value="&emsp;"/>
+                                            <p:outputLabel value="Description:" style="position: inherit; bottom: 20px"/><p:outputLabel value="&emsp;"/>
+                                            <p:inputTextarea rows="2"  id="desc"
+                                                             value="#{productionFournisseurController.selected.description}" />
+
+                                        </div>
+
+                                    </div>
+
+                                </p:panel>
+                                <p:panel>
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                            <p:outputLabel value="Numero Semaine:"/><p:outputLabel value="&emsp;"/>
+                                            <p:inputText  id="numS"
+                                                          value="#{productionFournisseurItemController.selected.numeroSemaine}" />
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <p:outputLabel value="&emsp;"/>
+                                            <p:outputLabel value="&emsp;"/>
+                                            <p:outputLabel value="&emsp;"/>
+                                            <p:outputLabel value="Poids:"/><p:outputLabel value="&emsp;"/>
+                                            <p:inputText  id="p"
+                                                          value="#{productionFournisseurItemController.selected.poids}" />
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <p:outputLabel value="Nombre Oeufs:"/><p:outputLabel value="&emsp;"/>
+                                            <p:inputText  id="nbrO"
+                                                          value="#{productionFournisseurItemController.selected.nbrOeuf}" />
+                                        </div>
+
+                                        <div align="right">
+                                        <p:commandButton value="Ajouter"/>
+                                        </div>
+                                    </div>
+
+                                </p:panel>
+                            </div>
+                        </div>
+
+                    </h:form>
+                </div>
+            </div>
+
+        </ui:define>
 
     </ui:composition>
 </html>

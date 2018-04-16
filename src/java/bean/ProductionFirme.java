@@ -29,7 +29,7 @@ public class ProductionFirme implements Serializable {
     @ManyToOne
     private Firme firme;
     @ManyToOne
-    private EntreePoussin entreePoussin;
+    private EntreePoussinFerme entreePoussinFerme;
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date adteProductionFirme;
@@ -53,14 +53,27 @@ public class ProductionFirme implements Serializable {
     private BigDecimal transfert;
     private BigDecimal vente;
     private BigDecimal reliquat;
+    private String description;
 
-    public EntreePoussin getEntreePoussin() {
-        return entreePoussin;
+    public String getDescription() {
+        return description;
     }
 
-    public void setEntreePoussin(EntreePoussin entreePoussin) {
-        this.entreePoussin = entreePoussin;
+    public void setDescription(String description) {
+        this.description = description;
     }
+
+    public EntreePoussinFerme getEntreePoussinFerme() {
+        if(entreePoussinFerme==null){
+            entreePoussinFerme=new EntreePoussinFerme();
+        }
+        return entreePoussinFerme;
+    }
+
+    public void setEntreePoussinFerme(EntreePoussinFerme entreePoussinFerme) {
+        this.entreePoussinFerme = entreePoussinFerme;
+    }
+    
 
     public BigDecimal getReliquat() {
         return reliquat;

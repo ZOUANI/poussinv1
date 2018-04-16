@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductionFournisseurItemCreateDlg" widgetVar="ProductionFournisseurItemCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle1.CreateProductionFournisseurItemTitle}">
+            <h:form id="ProductionFournisseurItemCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{productionFournisseurItemController.selected != null}">
+                        <p:outputLabel value="#{bundle1.CreateProductionFournisseurItemLabel_productionFournisseur}" for="productionFournisseur" />
+                        <p:selectOneMenu id="productionFournisseur" value="#{productionFournisseurItemController.selected.productionFournisseur}" >
+                            <f:selectItems value="#{productionFournisseurController.itemsAvailableSelectOne}"
+                                           var="productionFournisseurItem"
+                                           itemValue="#{productionFournisseurItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle1.CreateProductionFournisseurItemLabel_numeroSemaine}" for="numeroSemaine" />
+                        <p:inputText id="numeroSemaine" value="#{productionFournisseurItemController.selected.numeroSemaine}" title="#{bundle1.CreateProductionFournisseurItemTitle_numeroSemaine}" />
+                        <p:outputLabel value="#{bundle1.CreateProductionFournisseurItemLabel_nbrOeuf}" for="nbrOeuf" />
+                        <p:inputText id="nbrOeuf" value="#{productionFournisseurItemController.selected.nbrOeuf}" title="#{bundle1.CreateProductionFournisseurItemTitle_nbrOeuf}" />
+                        <p:outputLabel value="#{bundle1.CreateProductionFournisseurItemLabel_poids}" for="poids" />
+                        <p:inputText id="poids" value="#{productionFournisseurItemController.selected.poids}" title="#{bundle1.CreateProductionFournisseurItemTitle_poids}" />
+                        <p:outputLabel value="#{bundle1.CreateProductionFournisseurItemLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{productionFournisseurItemController.selected.id}" title="#{bundle1.CreateProductionFournisseurItemTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{productionFournisseurItemController.create}" value="#{bundle1.Save}" update="display,:ProductionFournisseurItemListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProductionFournisseurItemCreateDialog');"/>
+                    <p:commandButton value="#{bundle1.Cancel}" onclick="ProductionFournisseurItemCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

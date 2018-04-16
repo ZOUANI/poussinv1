@@ -26,9 +26,36 @@ public class Firme implements Serializable {
 
     private String nom;
     private BigDecimal capaciteMax;
+    private BigDecimal qteMale;
+    private BigDecimal qteFemale;
+    private BigDecimal qteTotal;
 
     public String getNom() {
         return nom;
+    }
+
+    public BigDecimal getQteMale() {
+        return qteMale;
+    }
+
+    public void setQteMale(BigDecimal qteMale) {
+        this.qteMale = qteMale;
+    }
+
+    public BigDecimal getQteFemale() {
+        return qteFemale;
+    }
+
+    public void setQteFemale(BigDecimal qteFemale) {
+        this.qteFemale = qteFemale;
+    }
+
+    public BigDecimal getQteTotal() {
+        return qteTotal;
+    }
+
+    public void setQteTotal(BigDecimal qteTotal) {
+        this.qteTotal = qteTotal;
     }
 
     public void setNom(String nom) {

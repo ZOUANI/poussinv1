@@ -33,13 +33,15 @@
 
                         <p:outputLabel value="Ecart inc/éclos:" for="ec" />
                         <h:panelGrid class="2">
-                        <p:inputText id="ec" value="#{eclosionController.selected.ecartEclosion}" title="#{bundle.CreateEclosionTitle_numeroSemaine}" />
+                        <p:inputText id="ec" value="#{eclosionController.selected.ecartEclosion}"
+                                     title="Ecart inc/éclos" disabled="true" />
                         <p:outputLabel value="41%"/>
                         </h:panelGrid>
 
                         <p:outputLabel value="Ecart de tri:" for="ecT" />
                         <h:panelGrid class="2">
-                            <p:inputText id="ecT" value="#{eclosionController.selected.ecartTrie}" title="#{bundle.CreateEclosionTitle_numeroSemaine}" />
+                            <p:inputText id="ecT" value="#{eclosionController.selected.ecartTrie}"
+                                         title="Ecart de tri:" disabled="true" />
                         <p:outputLabel value="1,17%"/>
                         </h:panelGrid>
 
@@ -52,6 +54,7 @@
                         
                         <p:outputLabel value="#{bundle.CreateEclosionLabel_commercialise}" for="commercialise" />
                         <p:inputText id="commercialise" value="#{eclosionController.selected.commercialise}" title="#{bundle.CreateEclosionTitle_commercialise}" />
+
                     </p:panelGrid>
                     <p:commandButton actionListener="#{eclosionController.create}" value="#{bundle.Save}" update="display,:EclosionListForm:datalist,:growl" oncomplete="handleSubmit(args,'EclosionCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="EclosionCreateDialog.hide()"/>

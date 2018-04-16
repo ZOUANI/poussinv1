@@ -8,11 +8,13 @@ package bean;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -21,17 +23,24 @@ import javax.persistence.ManyToOne;
 @Entity
 public class ProductionFournisseur implements Serializable {
 
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String code; 
     @ManyToOne
     private Fournisseur fournisseur;
-    private BigDecimal numeroSemaine;
-    private BigDecimal nbrOeuf;
-    private BigDecimal poids;
+    @OneToMany(mappedBy = "productionFournisseur")
+    private List<ProductionFournisseurItem> productionFournisseurItems;
+    private String description;
+    
 
+    
     public Fournisseur getFournisseur() {
+        if(fournisseur==null){
+            fournisseur=new Fournisseur();
+        }
         return fournisseur;
     }
 
@@ -39,28 +48,28 @@ public class ProductionFournisseur implements Serializable {
         this.fournisseur = fournisseur;
     }
 
-    public BigDecimal getNumeroSemaine() {
-        return numeroSemaine;
+    public String getCode() {
+        return code;
     }
 
-    public void setNumeroSemaine(BigDecimal numeroSemaine) {
-        this.numeroSemaine = numeroSemaine;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public BigDecimal getNbrOeuf() {
-        return nbrOeuf;
+    public List<ProductionFournisseurItem> getProductionFournisseurItems() {
+        return productionFournisseurItems;
     }
 
-    public void setNbrOeuf(BigDecimal nbrOeuf) {
-        this.nbrOeuf = nbrOeuf;
+    public void setProductionFournisseurItems(List<ProductionFournisseurItem> productionFournisseurItems) {
+        this.productionFournisseurItems = productionFournisseurItems;
     }
 
-    public BigDecimal getPoids() {
-        return poids;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPoids(BigDecimal poids) {
-        this.poids = poids;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Long getId() {

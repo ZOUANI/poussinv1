@@ -1,9 +1,9 @@
 package controller;
 
-import bean.ProductionFournisseur;
+import bean.ProductionFournisseurItem;
 import controller.util.JsfUtil;
 import controller.util.JsfUtil.PersistAction;
-import service.ProductionFournisseurFacade;
+import service.ProductionFournisseurItemFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,26 +19,26 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("productionFournisseurController")
+@Named("productionFournisseurItemController")
 @SessionScoped
-public class ProductionFournisseurController implements Serializable {
+public class ProductionFournisseurItemController implements Serializable {
 
     @EJB
-    private service.ProductionFournisseurFacade ejbFacade;
-    private List<ProductionFournisseur> items = null;
-    private ProductionFournisseur selected;
+    private service.ProductionFournisseurItemFacade ejbFacade;
+    private List<ProductionFournisseurItem> items = null;
+    private ProductionFournisseurItem selected;
 
-    public ProductionFournisseurController() {
+    public ProductionFournisseurItemController() {
     }
 
-    public ProductionFournisseur getSelected() {
+    public ProductionFournisseurItem getSelected() {
         if(selected==null){
-            selected=new ProductionFournisseur();
+            selected=new ProductionFournisseurItem();
         }
         return selected;
     }
 
-    public void setSelected(ProductionFournisseur selected) {
+    public void setSelected(ProductionFournisseurItem selected) {
         this.selected = selected;
     }
 
@@ -48,36 +48,36 @@ public class ProductionFournisseurController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private ProductionFournisseurFacade getFacade() {
+    private ProductionFournisseurItemFacade getFacade() {
         return ejbFacade;
     }
 
-    public ProductionFournisseur prepareCreate() {
-        selected = new ProductionFournisseur();
+    public ProductionFournisseurItem prepareCreate() {
+        selected = new ProductionFournisseurItem();
         initializeEmbeddableKey();
         return selected;
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("ProductionFournisseurCreated"));
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle1").getString("ProductionFournisseurItemCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("ProductionFournisseurUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle1").getString("ProductionFournisseurItemUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("ProductionFournisseurDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle1").getString("ProductionFournisseurItemDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<ProductionFournisseur> getItems() {
+    public List<ProductionFournisseurItem> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -103,38 +103,38 @@ public class ProductionFournisseurController implements Serializable {
                 if (msg.length() > 0) {
                     JsfUtil.addErrorMessage(msg);
                 } else {
-                    JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+                    JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle1").getString("PersistenceErrorOccured"));
                 }
             } catch (Exception ex) {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
-                JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+                JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle1").getString("PersistenceErrorOccured"));
             }
         }
     }
 
-    public ProductionFournisseur getProductionFournisseur(java.lang.Long id) {
+    public ProductionFournisseurItem getProductionFournisseurItem(java.lang.Long id) {
         return getFacade().find(id);
     }
 
-    public List<ProductionFournisseur> getItemsAvailableSelectMany() {
+    public List<ProductionFournisseurItem> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<ProductionFournisseur> getItemsAvailableSelectOne() {
+    public List<ProductionFournisseurItem> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = ProductionFournisseur.class)
-    public static class ProductionFournisseurControllerConverter implements Converter {
+    @FacesConverter(forClass = ProductionFournisseurItem.class)
+    public static class ProductionFournisseurItemControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            ProductionFournisseurController controller = (ProductionFournisseurController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "productionFournisseurController");
-            return controller.getProductionFournisseur(getKey(value));
+            ProductionFournisseurItemController controller = (ProductionFournisseurItemController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "productionFournisseurItemController");
+            return controller.getProductionFournisseurItem(getKey(value));
         }
 
         java.lang.Long getKey(String value) {
@@ -154,11 +154,11 @@ public class ProductionFournisseurController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof ProductionFournisseur) {
-                ProductionFournisseur o = (ProductionFournisseur) object;
+            if (object instanceof ProductionFournisseurItem) {
+                ProductionFournisseurItem o = (ProductionFournisseurItem) object;
                 return getStringKey(o.getId());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), ProductionFournisseur.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), ProductionFournisseurItem.class.getName()});
                 return null;
             }
         }

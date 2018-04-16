@@ -5,6 +5,7 @@
  */
 package bean;
 
+import controller.util.DateUtil;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Entity;
@@ -44,6 +45,8 @@ public class ProductionFournisseurItem implements Serializable {
     
 
     public BigDecimal getNumeroSemaine() {
+        numeroSemaine=DateUtil.getNumberWeek();
+        System.out.println("numeroSemaine "+numeroSemaine);
         return numeroSemaine;
     }
 

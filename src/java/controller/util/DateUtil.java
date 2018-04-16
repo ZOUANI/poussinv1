@@ -5,8 +5,10 @@
  */
 package controller.util;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -40,5 +42,13 @@ public class DateUtil {
             return null;
         }
     }
-    
+
+    public static BigDecimal getNumberWeek() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        int week = cal.get(Calendar.WEEK_OF_YEAR);
+        System.out.println("week.... "+week);
+        return new BigDecimal(week);
+    }
+
 }
